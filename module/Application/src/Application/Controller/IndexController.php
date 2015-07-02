@@ -16,6 +16,24 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+
+
+        $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+
+        $device = new \Application\Entity\Device();
+        $device->setName('OLT1');
+        $device->setIp(2886733840);
+        $device->setSnmpCommunity('public');
+        $device->setConfigUsername('admin');
+        $device->setConfigPassword('rfvbrflpt');
+        $device->setState(1);
+        $device->setModelId(1);
+
+        $objectManager->persist($device);
+        $objectManager->flush();
+
+        die(var_dump($device->getId()));
+
         return new ViewModel();
     }
 }
