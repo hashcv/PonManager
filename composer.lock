@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7bccedbf516266fd33b6327da64a3c46",
+    "hash": "b5f7f3db530fd84247496949486e5082",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1186,16 +1186,16 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "92408bb1968a81b3217a6fdf6c1a198da83caa35"
+                "reference": "1c330b1b6e1ea8fd15f2fbea46770576e366855c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/92408bb1968a81b3217a6fdf6c1a198da83caa35",
-                "reference": "92408bb1968a81b3217a6fdf6c1a198da83caa35",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/1c330b1b6e1ea8fd15f2fbea46770576e366855c",
+                "reference": "1c330b1b6e1ea8fd15f2fbea46770576e366855c",
                 "shasum": ""
             },
             "require": {
@@ -1237,7 +1237,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2015-06-11 15:55:48"
+            "time": "2015-07-04 05:41:32"
         },
         {
             "name": "sebastian/comparator",
@@ -1715,6 +1715,52 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2015-06-10 15:30:22"
+        },
+        {
+            "name": "wamasoftware/zend-framework-2-jquery-datatable-library",
+            "version": "dev-master",
+            "target-dir": "wamasoftware/zend-framework-2-jquery-datatable-library",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wamasoftware/zend-framework-2-jquery-datatable-library.git",
+                "reference": "033bf5f90d5d0ef512008b5235858e4f07b5a8fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wamasoftware/zend-framework-2-jquery-datatable-library/zipball/033bf5f90d5d0ef512008b5235858e4f07b5a8fc",
+                "reference": "033bf5f90d5d0ef512008b5235858e4f07b5a8fc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "zendframework/zendframework": "2.*"
+            },
+            "type": "datatable-library",
+            "autoload": {
+                "psr-0": {
+                    "wamasoftware\\zend-framework-2-jquery-datatable-library": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wama Software",
+                    "homepage": "http://wamasoftware.com/"
+                }
+            ],
+            "description": "Server-side handler of DataTables Jquery Plugin for Zend Framework 2",
+            "homepage": "https://github.com/wamasoftware/zend-framework-2-jquery-datatable-library",
+            "keywords": [
+                "Zend Framework",
+                "datatable",
+                "datatables",
+                "datatables jquery plugin",
+                "zend framework 2"
+            ],
+            "time": "2015-06-10 14:27:56"
         },
         {
             "name": "zendframework/zend-authentication",
@@ -3065,20 +3111,20 @@
         },
         {
             "name": "zendframework/zend-log",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-log.git",
-                "reference": "89cd787661796f360c2686a8f3e8dbc42d5f115f"
+                "reference": "6b0c8437c67153c5e81cdf1aaa147e5a126ed013"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-log/zipball/89cd787661796f360c2686a8f3e8dbc42d5f115f",
-                "reference": "89cd787661796f360c2686a8f3e8dbc42d5f115f",
+                "url": "https://api.github.com/repos/zendframework/zend-log/zipball/6b0c8437c67153c5e81cdf1aaa147e5a126ed013",
+                "reference": "6b0c8437c67153c5e81cdf1aaa147e5a126ed013",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.23",
+                "php": ">=5.5",
                 "zendframework/zend-servicemanager": "~2.5",
                 "zendframework/zend-stdlib": "~2.5"
             },
@@ -3094,12 +3140,12 @@
                 "zendframework/zend-validator": "~2.5"
             },
             "suggest": {
-                "ext-mongo": "*",
-                "zendframework/zend-console": "Zend\\Console component",
-                "zendframework/zend-db": "Zend\\Db component",
-                "zendframework/zend-escaper": "Zend\\Escaper component, for use in the XML formatter",
-                "zendframework/zend-mail": "Zend\\Mail component",
-                "zendframework/zend-validator": "Zend\\Validator component"
+                "ext-mongo": "mongodb extetension to use MongoDB writer",
+                "zendframework/zend-console": "Zend\\Console component to use the RequestID log processor",
+                "zendframework/zend-db": "Zend\\Db component to use the database log writer",
+                "zendframework/zend-escaper": "Zend\\Escaper component, for use in the XML log formatter",
+                "zendframework/zend-mail": "Zend\\Mail component to use the email log writer",
+                "zendframework/zend-validator": "Zend\\Validator component to block invalid log messages"
             },
             "type": "library",
             "extra": {
@@ -3124,7 +3170,7 @@
                 "logging",
                 "zf2"
             ],
-            "time": "2015-06-03 15:32:02"
+            "time": "2015-07-06 21:24:08"
         },
         {
             "name": "zendframework/zend-mail",
@@ -4802,7 +4848,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "zf-commons/zfc-user": 20,
-        "zendframework/zend-developer-tools": 20
+        "zendframework/zend-developer-tools": 20,
+        "wamasoftware/zend-framework-2-jquery-datatable-library": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

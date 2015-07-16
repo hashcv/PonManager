@@ -1,0 +1,82 @@
+<?php
+print $this->showMessages();
+print '<h1>' . $device['name'] . '</h1>';
+print '<div>' . $device['ip'] . '</div>';
+
+echo '<table id="example" class="display" cellspacing="10">';
+echo '<thead>';
+echo '<tr>';
+echo '<th>Param</th>';
+echo '<th>Value</th>';
+echo '</tr>';
+echo '</thead>';
+echo '<tbody>';
+
+echo '<tr>';
+echo "<th>Device</th>";
+echo "<td>$device0</td>";
+echo '</tr>';
+
+echo '<tr>';
+echo "<th>Info</th>";
+echo "<td>".$device['ip']." / $sysname</td>";
+echo '</tr>';
+
+echo '<tr>';
+echo "<th>Uptime</th>";
+echo "<td>$sysuptime</td>";
+echo '</tr>';
+
+echo '<tr>';
+echo "<th>Eth Ports</th>";
+echo '<td><table>';
+echo '<tr><th>Port</th><th>Status</th></tr>';
+
+foreach ($arr_eth as $v) {
+
+    $ifOperStatus = snmpget($device['ip'], $device['snmpCommunity'], "IF-MIB::ifOperStatus.".$v['key']);
+    $ifOperStatus =str_replace("\n","<br>",(str_replace("INTEGER: ", "", $ifOperStatus)));
+
+    echo '<tr><td>'.$v['descr'].'</td><td>'.$ifOperStatus.'</td></tr>';
+
+}
+echo '</table></td>';
+echo '</tr>';
+
+
+echo '<tr>';
+echo "<th>PON Ports</th>";
+echo '<td><table>';
+echo '<tr><th>Port</th><th>All</th><th>Act</th></tr>';
+foreach ($pon_cnt as $k => $v) {
+
+    if (substr($k,0,4) == 'EPON') {
+        echo '<tr><td>'.$k.'</td><td>'.($v-1).'</td><td>'.($pon_cnt_act[$k]-1).'</td></tr>';
+    }
+
+}
+echo '</table></td>';
+echo '</tr>';
+
+
+
+
+
+echo '</tbody>';
+echo '</table>';
+echo '
+	<script type="text/javascript" language="javascript">
+$(document).ready( function () {
+    $("#example").DataTable({
+	        "paging":   false,
+        "ordering": false,
+        "info":     false,
+		"searching": false
+	});
+} );
+	</script>
+
+    </div>
+    </div>
+    </div>';
+

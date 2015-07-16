@@ -19,11 +19,11 @@ class Device
 	 * @ORM\Column(type="string", length=255, nullable=false)
 	 */
 	protected $name;
-	
-	/**
-	 * @var int
-	 * @ORM\Column(type="integer", options={"unsigned"=true}, nullable=false)
-	 */
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=15, nullable=false)
+     */
 	protected $ip;
 	
 	/**
@@ -185,6 +185,26 @@ class Device
     public function setState($state)
     {
         $this->state = $state;
+    }
+
+
+    /**
+     * Helper function.
+     */
+    public function exchangeArray($data)
+    {
+        foreach ($data as $key => $val) {
+            if (property_exists($this, $key)) {
+                $this->$key = ($val !== null) ? $val : null;
+            }
+        }
+    }
+    /**
+     * Helper function
+     */
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
     }
 	
 	

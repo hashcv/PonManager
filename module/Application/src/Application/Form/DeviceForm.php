@@ -36,7 +36,7 @@ class DeviceForm extends Form
             ),
         ));
         $this->add(array(
-            'name' => 'text',
+            'name' => 'ip',
             'type' => 'Text',
             'options' => array(
                 'label' => 'IP address',
@@ -68,6 +68,13 @@ class DeviceForm extends Form
             'type' => 'Checkbox',
             'options' => array(
                 'label' => 'Enable',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'modelId',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Model',
             ),
         ));
         $this->add(array(

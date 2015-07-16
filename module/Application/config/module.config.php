@@ -8,7 +8,7 @@
  */
 
 return array(
-    'router' => array(
+/*    'router' => array(
         'routes' => array(
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
@@ -51,6 +51,25 @@ return array(
                 ),
             ),
         ),
+    ),*/
+    'router' => array(
+        'routes' => array(
+            'device' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/device[/][:action][/:id][/:key]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                        'key'    => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+        ),
     ),
     'service_manager' => array(
         'abstract_factories' => array(
@@ -59,6 +78,7 @@ return array(
         ),
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
         ),
     ),
     'translator' => array(
@@ -92,6 +112,11 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+    'view_helpers' => array(
+        'invokables' => array(
+            'showMessages' => 'Application\View\Helper\ShowMessages',
+        ),
+    ),
     // Placeholder for console routes
     'console' => array(
         'router' => array(
@@ -112,5 +137,20 @@ return array(
             )
         )
     ),
+
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'Home',
+                'route' => 'device',
+            ),
+            array(
+                'label' => 'Add new',
+                'route' => 'device',
+                'action' => 'add',
+                ),
+            ),
+        ),
+
 
 );

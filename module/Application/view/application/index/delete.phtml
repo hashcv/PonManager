@@ -1,0 +1,14 @@
+<p>Are you sure that you want to delete "<?php echo $this->escapeHtml($device['name']); ?>"? </p>
+<?php
+$url = $this->url('device', array(
+    'action' => 'delete',
+    'id'     => $device['id'],
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+    <div>
+        <input type="hidden" name="id" value="<?php echo (int) $device['id']; ?>" />
+        <input type="submit" name="del" value="Yes" />
+        <input type="submit" name="del" value="No" />
+    </div>
+</form>
