@@ -56,17 +56,7 @@
 </nav>
 
 <div class="container">
-
-    <?php
-    echo $this->navigation('navigation')
-        ->breadcrumbs()
-        ->setMinDepth(0)
-        ->setPartial('partial/breadcrumb.phtml');
-    ?>
     <?php echo $this->content; ?>
-
-
-
     <hr>
     <footer>
         <p>&copy; 2005 - <?php echo date('Y') ?> by Alpha Software

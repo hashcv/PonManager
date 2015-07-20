@@ -1,29 +1,23 @@
 <?php
 namespace Application\Form;
+
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
+
 class DeviceForm extends Form
 {
     public function __construct($name = null)
     {
         parent::__construct('device');
         $this->setAttribute('method', 'post');
-        $this->setInputFilter(new \Application\Form\DeviceInputFilter());
+      //  $this->setInputFilter(new \Application\Form\DeviceInputFilter());
         $this->add(array(
             'name' => 'security',
             'type' => 'Zend\Form\Element\Csrf',
         ));
         $this->add(array(
             'name' => 'id',
-            'type' => 'Hidden',
-        ));
-        $this->add(array(
-            'name' => 'created',
-            'type' => 'Hidden',
-        ));
-        $this->add(array(
-            'name' => 'userId',
             'type' => 'Hidden',
         ));
         $this->add(array(

@@ -1,24 +1,24 @@
 <?php
 print $this->showMessages();
 
-echo '<table id="example" class="display" cellspacing="10">';
-echo '<thead>';
-echo '<tr>';
-echo '<th>Param</th>';
-echo '<th>Value</th>';
-echo '</tr>';
-echo '</thead>';
+echo "<table id='onu_info' class='display' cellspacing='10'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>Param</th>";
+echo "<th>Value</th>";
+echo "</tr>";
+echo "</thead>";
 
-echo '<tbody>';
-echo '<tr>';
+echo "<tbody>";
+echo "<tr>";
 echo "<th>MAC</th>";
 echo "<td>$mac_address</td>";
-echo '</tr>';
+echo "</tr>";
 
-echo '<tr>';
+echo "<tr>";
 echo "<th>IfDescr</th>";
 echo "<td>$ifdescr</td>";
-echo '</tr>';
+echo "</tr>";
 
 switch ($active) {
     case 0:
@@ -37,69 +37,73 @@ switch ($active) {
         $onu_status = "none";
 }
 
-echo '<tr>';
+echo "<tr>";
 echo "<th>Status</th>";
 echo "<td>$active ($onu_status)</td>";
-echo '</tr>';
+echo "</tr>";
 
-echo '<tr>';
+echo "<tr>";
 echo "<th>Model</th>";
-echo "<td>".trim(str_replace('"',' ',($onu_vendor.' '.$onu_model)))." ($response)</td>";
-echo '</tr>';
+echo "<td>" . trim(str_replace('"', " ", ($onu_vendor . " " . $onu_model))) . " ($response)</td>";
+echo "</tr>";
 
-echo '<tr>';
+echo "<tr>";
 echo "<th>Hardware Version</th>";
 echo "<td>$hard_s</td>";
-echo '</tr>';
+echo "</tr>";
 
-echo '<tr>';
+echo "<tr>";
 echo "<th>Software Version</th>";
 echo "<td>$soft_s</td>";
-echo '</tr>';
+echo "</tr>";
 
-echo '<tr>';
+echo "<tr>";
 echo "<th>RxPower</th>";
 echo "<td>$opt_level_up dBm</td>";
-echo '</tr>';
+echo "</tr>";
 
-echo '<tr>';
+echo "<tr>";
 echo "<th>Distance</th>";
 echo "<td>$onu_distance m</td>";
-echo '</tr>';
+echo "</tr>";
 
-echo '<tr>';
+echo "<tr>";
 echo "<th>Ports</th>";
-echo "<td>".implode("<br>", $Array_ports__)."</td>";
-echo '</tr>';
+echo "<td>" . implode("<br>", $Array_ports__) . "</td>";
+echo "</tr>";
 
-echo '<tr>';
+echo "<tr>";
 echo "<th>Last change</th>";
 echo "<td>$lastchange</td>";
-echo '</tr>';
+echo "</tr>";
 
+echo "<tr>";
+echo "<th>FDB</th>";
+echo "<td><ul>";
 
+if (is_null($fdb)) {
+    echo "<li>OLT software version must be 10.1.0B Build 14297 or above!</li>";
 
+}else {
 
+    foreach ($fdb as $key => $value)
+        echo "<li>$key ( VlanID: $value )</li>";
+}
+echo "</ul></td>";
+echo "</tr>";
 
+echo "</tbody>";
+echo "</table>";
 
+?>
 
-
-
-
-echo '</tbody>';
-echo '</table>';
-echo '
-	<script type="text/javascript" language="javascript">
-$(document).ready( function () {
-    $("#example").DataTable({
-	        "paging":   false,
-        "ordering": false,
-        "info":     false,
-		"searching": false
-	});
-} );
-	</script>
-
-    </div>
-    </div>
-    </div>';
+<script type='text/javascript' language='javascript'>
+    $(document).ready(function () {
+        $('#onu_info').DataTable({
+            'paging': false,
+            'ordering': false,
+            'info': false,
+            'searching': false
+        });
+    });
+</script>

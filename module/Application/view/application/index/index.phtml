@@ -1,8 +1,6 @@
-<?php
-print $this->showMessages();
-?>
+<?php print $this->showMessages(); ?>
 
-<table id="devices"  cellspacing="0" width="100%">
+<table id="devices" cellspacing="0" width="100%">
     <thead>
     <tr>
         <th>Id</th>
@@ -16,10 +14,10 @@ print $this->showMessages();
     <?php
     foreach ($this->devices as $device) {
         print '<tr>'
-                . '<td>' . $device['id'] . '</td>>'
-                . '<td> <a href="' . $this->url('device', array('action' => 'view', 'id' => $device['id'])) . '">' . $device['name'] . '</a></td>>'
-                . '<td>' . $device['ip'] .'</td>>'
-                . '<td> <a href="' . $this->url('device', array('action' => 'onuList', 'id' => $device['id'])) . '">ONU list</a> |
+            . '<td>' . $device['id'] . '</td>'
+            . '<td> <a href="' . $this->url('device', array('action' => 'view', 'id' => $device['id'])) . '">' . $device['name'] . '</a></td>'
+            . '<td>' . $device['ip'] . '</td>'
+            . '<td> <a href="' . $this->url('device', array('action' => 'onuList', 'id' => $device['id'])) . '">ONU list</a> |
                     <a href="' . $this->url('device', array('action' => 'edit', 'id' => $device['id'])) . '">edit</a> |
                    <a href="' . $this->url('device', array('action' => 'delete', 'id' => $device['id'])) . '">delete</a></td>
               </tr>';
@@ -39,10 +37,10 @@ print $this->showMessages();
 
 
 <script type="text/javascript" language="javascript">
-    $(document).ready( function() {
-             $('#devices').DataTable( {
-                "paginate": false,
-                "sort": true
-              } );
-        } );
+    $(document).ready(function () {
+        $('#devices').DataTable({
+            "paginate": false,
+            "sort": true
+        });
+    });
 </script>

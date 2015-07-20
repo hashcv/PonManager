@@ -1,71 +1,44 @@
-<?php
-print $this->showMessages();
-
-
-echo '
-    <div>
-        <ul class="breadcrumb">
-            <li>
-                <a href="../../device/">Devices</a>
-            </li>
-            <li>
-                <a href="../../device/onuList/' . $device["id"] . '">OLT ' . $device["id"] . '</a>
-            </li>
-        </ul>
-    </div>
-
-
+<?php print $this->showMessages(); ?>
 
 <table id="onuList" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-			 <th>OLT</th>
-                <th>Port</th>
-                <th>MAC ONU</th>
-				 <th>RxPower(dBm)</th>
-				 <th>Details</th>
+    <thead>
+    <tr>
+        <th>OLT</th>
+        <th>Port</th>
+        <th>MAC ONU</th>
+        <th>RxPower(dBm)</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
 
-
-            </tr>
-        </thead>
- <tbody>';
-
-
-foreach ($obj as $value) {
-
-    echo "<tr>";
-    echo "<td>$value[olt]</td>";
-    echo "<td>$value[port]</td>";
-    echo "<td>$value[mac_onu]</td>";
-    echo "<td>$value[rxp]</td>";
-
-    echo "<td>";
-    echo "<a class='btn btn-success' href=../onuDetails/$device[id]/$value[key]>
+    <?php
+    foreach ($obj as $value) {
+        echo "<tr>";
+        echo "<td>$value[olt]</td>";
+        echo "<td>$value[port]</td>";
+        echo "<td>$value[mac_onu]</td>";
+        echo "<td>$value[rxp]</td>";
+        echo "<td>";
+        echo "<a class='btn btn-success' href=../onuDetails/$device[id]/$value[key]>
                 <i class='glyphicon glyphicon-zoom-in icon-white'></i> ONU Details
             </a>";
-    echo "</td>";
-    echo '</tr>';
+        echo "</td>";
+        echo '</tr>';
+    }
+    ?>
 
-}
-
-
-echo "
-</tbody>
-        <tfoot>
-            <tr>
-			 <th>OLT</th>
-                <th>Port</th>
-                <th>MAC ONU</th>
-				 <th>RxPower(dBm)</th>
-				 <th>Details</th>
-
-
-            </tr>
-        </tfoot>
-    </table>
-";
-
-?>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>OLT</th>
+        <th>Port</th>
+        <th>MAC ONU</th>
+        <th>RxPower(dBm)</th>
+        <th>Details</th>
+    </tr>
+    </tfoot>
+</table>
 
 <script type="text/javascript" language="javascript">
     $(document).ready(function () {
@@ -81,12 +54,10 @@ echo "
                             var val = $.fn.dataTable.util.escapeRegex(
                                 $(this).val()
                             );
-
                             column
                                 .search(val ? '^' + val + '$' : '', true, false)
                                 .draw();
                         });
-
                     column.data().unique().sort().each(function (d, j) {
                         select.append('<option value="' + d + '">' + d + '</option>')
                     });

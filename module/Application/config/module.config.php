@@ -141,7 +141,7 @@ return array(
     'navigation' => array(
         'default' => array(
             array(
-                'label' => 'Home',
+                'label' => 'Devices',
                 'route' => 'device',
             ),
             array(
