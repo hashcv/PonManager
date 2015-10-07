@@ -2,20 +2,17 @@
 /**
  * Zend Framework (http://framework.zend.com/)
  *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
+ * @link      http://github.com/zendframework/PonManager for the canonical source repository
  * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 use Application\Entity;
 use Zend\Db\Adapter;
-
-use Zend\Db\Adapter\Platform\PlatformInterface;
-use Zend\Db\ResultSet\ResultSet;
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
@@ -259,30 +256,17 @@ class IndexController extends AbstractActionController
             $fdb_vlan = snmpget($device->getIp(), $device->getSnmpCommunity(), str_replace("3320.152.1.1.3", "3320.152.1.1.2", $fdb_key));
             $fdb_vlan = str_replace(" ", ":", strtolower(trim(str_replace("INTEGER: ", "", $fdb_vlan))));
             $fdb[$fdb_mac] = $fdb_vlan;
-       // echo strtolower(trim(str_replace("Hex-STRING: ", "", $fdb_key)));
-       // $fdb_val = str_replace(" ", ":", strtolower(trim(str_replace("Hex-STRING: ", "", $fdb_val))));
-    }
-
-
+        }
 
         $Array_ports = "";
         $Array_ports_ = "";
         $Array_ports__ = "";
         $Array_ports = snmprealwalk($device->getIp(), $device->getSnmpCommunity(), "enterprises.3320.101.12.1.1.8.$key");
-
-
-
-
-//print_r($Array_ports);
-
         foreach ($Array_ports as $key_ => $state) {
-//$Array_olt="";
-
             $port = str_replace("SNMPv2-SMI::enterprises.3320.101.12.1.1.8.$key.", "", $key_);
             $vid = snmpget($device->getIp(), $device->getSnmpCommunity(), "SNMPv2-SMI::enterprises.3320.101.12.1.1.3.$key.$port");
             $vid = str_replace(" ", ":", strtolower(trim(str_replace("INTEGER: ", "", $vid))));
 
-//str_replace("SNMPv2-SMI::enterprises.3320.101.12.1.1.3.$key.", "", $key_);
             $Array_state = explode(":", $state);
             $state = trim($Array_state[1]);
 

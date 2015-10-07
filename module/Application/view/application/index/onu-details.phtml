@@ -83,9 +83,7 @@ echo "<td><ul>";
 
 if (is_null($fdb)) {
     echo "<li>OLT software version must be 10.1.0B Build 14297 or above!</li>";
-
-}else {
-
+} else {
     foreach ($fdb as $key => $value)
         echo "<li>$key ( VlanID: $value )</li>";
 }
